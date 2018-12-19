@@ -6,6 +6,7 @@ column_number = 0
 LAs = []                        #creates array of LA's in the csv
 times = {}                      #creates dictionary with shifts as the key 
                                 # and an array of LA's working at that time as the value
+times_to_fill = []              #creates list of times to fill that must have at least one LA
 
 class LA:                       #creates LA Class with a name, hours which should be a list of shift objects
     def __init__(self, name, hours, shifts):
@@ -36,17 +37,21 @@ with open('csv_files\\responses3.csv') as csvfile:                      #might n
                         LAs[row_number - 1].shifts.append(column)
 
                         if not times.__contains__(column):              #if the dictionary of shifts doesnt have this time then 
-                            times[column] = []                          # it gets added with the current LA
-                            times[column].append(LAs[row_number - 1])
+                            times[str(column)] = []                          # it gets added with the current LA
+                            times[str(column)].append(LAs[row_number - 1])
                         else:
-                            times[column].append(LAs[row_number - 1])   #else it just adds the la to that shift
+                            times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                 
                 column_number += 1
 
         row_number += 1
         column_number = 0
 
-
+with open('csv_files\\shift_times.csv') as csvfile: 
+    reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
+    for row in reader1:
+        for column in row:
+            times_to_fill.append(str(column))
 #prints out LA information:
 
 #iterator = 0
@@ -58,18 +63,30 @@ with open('csv_files\\responses3.csv') as csvfile:                      #might n
 
 #prints times and the la's in each slot
 def getSchedule():
+
     s = ''
+    # for server:
     for t in times:
         s += t + '</p>'
         for la in times.get(t):
             s += '<p style=\"margin-left: 40px\">' + la.name + '</p><p>'
 
-
-        # #print(t)
-        # s += t + '<br>'
-        # for la in times.get(t):
-        #     s += '</t>'+la.name+'<br>'
-        #     #print('     '+la.name)
+    #for command prompt:
+    # for t in times:
+    #     #print(t)
+    #     s += t + '\n'
+    #     for la in times.get(t):
+    #         s += '      '+la.name+'\n'
+    #         #print('     '+la.name)
     return s
 
-#print(getSchedule())
+def getUnWorkedTimes():
+    s = ''
+    for t in times_to_fill:
+        if str(t) not in times:
+            s += str(t) + '</br>'
+    return s
+
+# print(getSchedule())
+# print('Times not assigned:')
+# print(getUnWorkedTimes())
