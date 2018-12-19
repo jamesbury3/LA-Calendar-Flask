@@ -1,16 +1,16 @@
 import time
 import calendar
+import Scheduler
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')                 #index page
 def index():
-    return 'Index Page'
+    user = Scheduler.getSchedule()
+    return render_template('index.html', title='Home', user=user)
 
-@app.route('/hello')            #test route
-def hello():
-    p1 = LA("James", 10)
-    return p1.name
+
 
 

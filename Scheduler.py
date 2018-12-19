@@ -57,7 +57,19 @@ with open('csv_files\\responses3.csv') as csvfile:                      #might n
 #     iterator += 1
 
 #prints times and the la's in each slot
-for t in times:
-    print(t)
-    for la in times.get(t):
-        print('     '+la.name)
+def getSchedule():
+    s = ''
+    for t in times:
+        s += t + '</p>'
+        for la in times.get(t):
+            s += '<p style=\"margin-left: 40px\">' + la.name + '</p><p>'
+
+
+        # #print(t)
+        # s += t + '<br>'
+        # for la in times.get(t):
+        #     s += '</t>'+la.name+'<br>'
+        #     #print('     '+la.name)
+    return s
+
+#print(getSchedule())
