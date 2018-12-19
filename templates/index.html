@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--adds libraries-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
         <title>{{ title }} - LA Calendar</title>
     </head>
     <body>
+        <div class="container">
+            <div class="row">
+                {% for time in times %}
+                <div class="col">
+                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                            <div class="card-body text-secondary">
+                            <h5 class="card-title">{{ time|safe }}</h5>
+                                {% for la in times.get(time) %}
+                                    <p class="card-text">{{ la.name|safe }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         <h1>Assigned Times:</h1>
         <p>{{ times|safe }}</p>
         <h2>Unassigned Times:</h2>

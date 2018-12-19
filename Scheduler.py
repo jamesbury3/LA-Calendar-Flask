@@ -80,6 +80,9 @@ def getSchedule():
     #         #print('     '+la.name)
     return s
 
+def getTimesAndLAs():
+    return times
+
 def getUnWorkedTimes():
     s = ''
     for t in times_to_fill:
