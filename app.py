@@ -8,9 +8,5 @@ app = Flask(__name__)
 
 @app.route('/')                 #index page
 def index():
-    user = Scheduler.getSchedule()
-    return render_template('index.html', title='Home', user=user)
-
-
-
-
+    times = Scheduler.getSchedule()
+    return render_template('index.html', title='Home', times=times)
