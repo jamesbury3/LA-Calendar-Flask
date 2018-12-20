@@ -81,7 +81,20 @@ def getSchedule():
     return s
 
 def getTimesAndLAs():
-    return times
+    times_and_las = {}                                          #creates dictionary with key time and value of a string of the
+                                                                # la names
+    for time in times:
+        times_and_las[time] = ''
+        i = 0
+
+        for la in times[time]:
+            if i == 0:    
+                times_and_las[time] += la.name
+            else:
+                times_and_las[time] += ', ' + la.name
+            i += 1
+
+    return times_and_las
 
 def getUnWorkedTimes():
     s = ''
@@ -93,3 +106,4 @@ def getUnWorkedTimes():
 # print(getSchedule())
 # print('Times not assigned:')
 # print(getUnWorkedTimes())
+#print(getTimesAndLAs())
