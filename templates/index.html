@@ -14,6 +14,7 @@
     <body>
         <div class="container">
             <h7 class="display-4">Monday:</h7>
+            <p></p>
             <div class="row">
                 {% for time in monday %}
                 <div class="col-md-3">
@@ -29,6 +30,7 @@
                 {% endfor %}
             </div>
             <h7 class="display-4">Tuesday:</h7>
+            <p></p>
             <div class="row">
                 {% for time in tuesday %}
                 <div class="col-md-3">
@@ -44,6 +46,7 @@
                 {% endfor %}
             </div>
             <h7 class="display-4">Wednesday:</h7>
+            <p></p>
             <div class="row">
                 {% for time in wednesday %}
                 <div class="col-md-3">
@@ -59,6 +62,7 @@
                 {% endfor %}
             </div>
             <h7 class="display-4">Thursday:</h7>
+            <p></p>
             <div class="row">
                 {% for time in thursday %}
                 <div class="col-md-3">
@@ -74,6 +78,7 @@
                 {% endfor %}
             </div>
             <h7 class="display-4">Friday:</h7>
+            <p></p>
             <div class="row">
                 {% for time in friday %}
                 <div class="col-md-3">
@@ -88,10 +93,11 @@
                 </div>
                 {% endfor %}
             </div>
+        
+            <!-- <h1>Assigned Times:</h1>
+            <p>{{ times|safe }}</p> -->
+            <h2>Unassigned Times:</h2>
+            <p>{{ unassigned_times|safe }}</p>
         </div>
-        <!-- <h1>Assigned Times:</h1>
-        <p>{{ times|safe }}</p> -->
-        <h2>Unassigned Times:</h2>
-        <p>{{ unassigned_times|safe }}</p>
     </body>
 </html>
