@@ -14,8 +14,10 @@ class LA:                       #creates LA Class with a name, hours which shoul
         self.hours = hours
         self.shifts = shifts
         self.worked = 0
+    def subtractHours(self):
+        self.hours = int(self.hours)-1
 
-with open('csv_files\\responses3.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/responses3.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -29,25 +31,35 @@ with open('csv_files\\responses3.csv') as csvfile:                      #might n
 
                     if column_number == 1:                              #adds the LA's name into LAs array
                         LAs.append(LA(column, 0, []))
-                    
-                    if column_number == 2:                              #adds the la's hours worked into LAs array
+
+                    if column_number == 2:                               #adds the time to the LA's array of shifts
                         LAs[row_number - 1].hours = column
 
-                    if column_number > 2:                               #adds the time to the LA's array of shifts
-                        LAs[row_number - 1].shifts.append(column)
+                    if column_number > 2:
+                        #LAs[row_number - 1].shifts.append(column)
 
-                        if not times.__contains__(column):              #if the dictionary of shifts doesnt have this time then 
+                        if not times.__contains__(column) and LAs[row_number - 1].hours > 0 :              #if the dictionary of shifts doesnt have this time then 
                             times[str(column)] = []                          # it gets added with the current LA
                             times[str(column)].append(LAs[row_number - 1])
+                            LAs[row_number - 1].subtractHours()
+
                         else:
-                            times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
+                            if LAs[row_number - 1].hours > 0:
+                                times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
+                                LAs[row_number - 1].subtractHours()
+                                if len(times[str(column)]) >= 3:
+                                    least = LAs[row_number - 1]
+                                    for other in times[str(column)]:
+                                        if least.hours > other.hours:
+                                            least =  other
+                                    times[str(column)].remove(least)
                 
                 column_number += 1
 
         row_number += 1
         column_number = 0
 
-with open('csv_files\\shift_times.csv') as csvfile: 
+with open('csv_files/shift_times.csv') as csvfile: 
     reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader1:
         for column in row:
@@ -80,6 +92,22 @@ def getSchedule():
     #         #print('     '+la.name)
     return s
 
+def getTimesAndLAs():
+    times_and_las = {}                                          #creates dictionary with key time and value of a string of the
+                                                                # la names
+    for time in times:
+        times_and_las[time] = ''
+        i = 0
+
+        for la in times[time]:
+            if i == 0:    
+                times_and_las[time] += la.name
+            else:
+                times_and_las[time] += ', ' + la.name
+            i += 1
+
+    return times_and_las
+
 def getUnWorkedTimes():
     s = ''
     for t in times_to_fill:
@@ -90,3 +118,5 @@ def getUnWorkedTimes():
 # print(getSchedule())
 # print('Times not assigned:')
 # print(getUnWorkedTimes())
+
+print(getTimesAndLAs())
