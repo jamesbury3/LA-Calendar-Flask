@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app calendar:app
+web: gunicorn calendar:app
