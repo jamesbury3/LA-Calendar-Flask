@@ -1,1 +1,1 @@
-web: gunicorn cal.py
+web: gunicorn --pythonpath app app:app
