@@ -41,7 +41,7 @@ with open('csv_files/responses4.csv') as csvfile:                      #might ne
                     if column_number > 2:
                         LAs[row_number - 1].shifts.append(column)
 
-                        if not times.__contains__(column) and LAs[row_number - 1].hours > 0:  #if the dictionary of shifts doesnt have this time then 
+                        if not times.__contains__(column) and int(LAs[row_number - 1].hours) > 0:  #if the dictionary of shifts doesnt have this time then 
                             times[str(column)] = []                          # it gets added with the current LA
                             times[str(column)].append(LAs[row_number - 1])
                             LAs[row_number - 1].subtractHours()
