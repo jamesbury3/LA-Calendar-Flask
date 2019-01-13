@@ -16,8 +16,10 @@ class LA:                       #creates LA Class with a name, hours which shoul
         self.worked = 0
     def subtractHours(self):
         self.hours = int(self.hours)-1
+    def addHours(self):
+        self.hours = int(self.hours)+1
 
-with open('csv_files/responses3.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/responses4.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -36,7 +38,7 @@ with open('csv_files/responses3.csv') as csvfile:                      #might ne
                         LAs[row_number - 1].hours = column
 
                     if column_number > 2:
-                        #LAs[row_number - 1].shifts.append(column)
+                        LAs[row_number - 1].shifts.append(column)
 
                         if not times.__contains__(column) and LAs[row_number - 1].hours > 0:  #if the dictionary of shifts doesnt have this time then 
                             times[str(column)] = []                          # it gets added with the current LA
@@ -53,17 +55,30 @@ with open('csv_files/responses3.csv') as csvfile:                      #might ne
                                         if least.hours > other.hours:
                                             least =  other
                                     times[str(column)].remove(least)
+                                    least.addHours()
                 
                 column_number += 1
 
         row_number += 1
         column_number = 0
 
+        for la in LAs:
+                for time in la.shifts:
+                    if la.hours>0 and not times.__contains__(time):
+                        times[str(time)] = []
+                        times[str(time)].append(la)
+                        la.subtractHours()
+                    else:
+                        if la.hours>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
+                            times[str(time)].append(la)
+                            la.subtractHours()
 with open('csv_files/shift_times.csv') as csvfile: 
-    reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
-    for row in reader1:
-        for column in row:
-            times_to_fill.append(str(column))
+        reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
+        for row in reader1:
+            for column in row:
+                times_to_fill.append(str(column))
+
+
 #prints out LA information:
 
 #iterator = 0
@@ -75,7 +90,6 @@ with open('csv_files/shift_times.csv') as csvfile:
 
 #prints times and the la's in each slot
 def getSchedule():
-
     s = ''
     # for server:
     for t in times:
