@@ -47,7 +47,7 @@ with open('csv_files/responses4.csv') as csvfile:                      #might ne
                             LAs[row_number - 1].subtractHours()
 
                         else:
-                            if LAs[row_number - 1].hours > 0:
+                            if int(LAs[row_number - 1].hours) > 0:
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
                                 if len(times[str(column)]) > 3:
@@ -65,12 +65,12 @@ with open('csv_files/responses4.csv') as csvfile:                      #might ne
 
         for la in LAs:
                 for time in la.shifts:
-                    if la.hours>0 and not times.__contains__(time):
+                    if int(la.hours)>0 and not times.__contains__(time):
                         times[str(time)] = []
                         times[str(time)].append(la)
                         la.subtractHours()
                     else:
-                        if la.hours>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
+                        if int(la.hours)>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
                             times[str(time)].append(la)
                             la.subtractHours()
 with open('csv_files/shift_times.csv') as csvfile: 
