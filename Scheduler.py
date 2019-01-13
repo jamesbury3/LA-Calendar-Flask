@@ -116,8 +116,6 @@ def getTimesAndLAs():
                             times_and_las[column] += ', ' + la.name
                         i += 1  
             i = 0
-    for time in times_and_las:
-        print time
     return times_and_las
 
 def getUnWorkedTimes():
@@ -131,4 +129,4 @@ def getUnWorkedTimes():
 # print('Times not assigned:')
 # print(getUnWorkedTimes())
 
-print(getTimesAndLAs())
+#print(getTimesAndLAs())
