@@ -1,4 +1,5 @@
 import csv
+import collections
 
 row_number = 0
 column_number = 0
@@ -92,34 +93,31 @@ with open('csv_files/shift_times.csv') as csvfile:
 def getSchedule():
     s = ''
     # for server:
-    for t in times:
+    for t in times_to_fill:
         s += t + '</p>'
-        for la in times.get(t):
+        for la in times_to_fill.get(t):
             s += '<p style=\"margin-left: 40px\">' + la.name + '</p><p>'
-
-    #for command prompt:
-    # for t in times:
-    #     #print(t)
-    #     s += t + '\n'
-    #     for la in times.get(t):
-    #         s += '      '+la.name+'\n'
-    #         #print('     '+la.name)
     return s
 
 def getTimesAndLAs():
-    times_and_las = {}                                          #creates dictionary with key time and value of a string of the
+    times_and_las = collections.OrderedDict()                   #creates dictionary with key time and value of a string of the
                                                                 # la names
-    for time in times:
-        times_and_las[time] = ''
-        i = 0
-
-        for la in times[time]:
-            if i == 0:    
-                times_and_las[time] += la.name
-            else:
-                times_and_las[time] += ', ' + la.name
-            i += 1
-
+    with open('csv_files/shift_times.csv') as csvfile: 
+        reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
+        for row in reader1:
+            for column in row:
+                if times.__contains__(column):     
+                    times_and_las[column] = ''
+                    i = 0
+                    for la in times[column]:
+                        if i == 0:    
+                            times_and_las[column] += la.name
+                        else:
+                            times_and_las[column] += ', ' + la.name
+                        i += 1  
+            i = 0
+    for time in times_and_las:
+        print time
     return times_and_las
 
 def getUnWorkedTimes():

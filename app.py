@@ -1,6 +1,7 @@
 import time
 import calendar
 import Scheduler
+import collections
 
 from flask import Flask
 from flask import render_template
@@ -9,11 +10,11 @@ app = Flask(__name__)
 @app.route('/')                 #index page
 def index():
     times = Scheduler.getTimesAndLAs()                      #gets the dictionary of times and las at each time
-    monday = {}
-    tuesday = {}
-    wednesday = {}
-    thursday = {}
-    friday = {}
+    monday = collections.OrderedDict()
+    tuesday = collections.OrderedDict()
+    wednesday = collections.OrderedDict()
+    thursday = collections.OrderedDict()
+    friday = collections.OrderedDict()
 
     for time in times:                                      #creates a new dictionary for each day of the week
         if 'Monday' in time:
