@@ -50,7 +50,7 @@ with open('csv_files/responses7.csv') as csvfile:                      #might ne
                             if int(LAs[row_number - 1].hours) > 0:
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
-                                if len(times[str(column)]) > 3:
+                                if len(times[str(column)]) > 4:
                                     least = LAs[row_number - 1]
                                     for other in times[str(column)]:
                                         if least.hours > other.hours:
