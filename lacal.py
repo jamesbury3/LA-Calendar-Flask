@@ -4,7 +4,9 @@ import collections
 
 from flask import Flask
 from flask import render_template
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 @app.route('/')                 #index page
 def index():
@@ -30,3 +32,7 @@ def index():
     unassigned_times = Scheduler.getUnWorkedTimes()         #gets the unassigned times
     return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday)
+
+@app.route('/swap_shifts')
+def swap_shifts():
+    return render_template('swap_shifts.html')
