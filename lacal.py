@@ -31,8 +31,8 @@ def index():
 
     unassigned_times = Scheduler.getUnWorkedTimes()         #gets the unassigned times
     return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
-    monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday)
+    monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, site = "index")
 
 @app.route('/swap_shifts')
 def swap_shifts():
-    return render_template('swap_shifts.html')
+    return render_template('swap_shifts.html', site = "swap")
