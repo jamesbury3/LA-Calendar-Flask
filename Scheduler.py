@@ -51,12 +51,24 @@ with open('csv_files/firstSchedule.csv') as csvfile:                      #might
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
                                 if len(times[str(column)]) > 4:
-                                    least = LAs[row_number - 1]
-                                    for other in times[str(column)]:
+                                    la_worked_previously = False;
+                                    if prev_time:
+                                        for la in prev_time:
+                                            if LAs[row_number - 1].name is la.name:
+                                                la_worked_previously = True
+                                    if la_worked_previously and int(LAs[row_number - 1].hours) > 0:
+                                        group = times[str(column)]
+                                        group.remove(LAs[row_number - 1])
+                                    else:
+                                        group = times[str(column)]
+                                    least = group[0]
+                                    for other in group:
                                         if least.hours > other.hours:
-                                            least =  other
+                                            least = other
                                     times[str(column)].remove(least)
                                     least.addHours()
+                        if times.__contains__(str(column)):
+                            prev_time = times[str(column)]
                 
                 column_number += 1
 
@@ -70,14 +82,43 @@ with open('csv_files/firstSchedule.csv') as csvfile:                      #might
                         times[str(time)].append(la)
                         la.subtractHours()
                     else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
+                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
                             times[str(time)].append(la)
                             la.subtractHours()
+
+
 with open('csv_files/shift_times.csv') as csvfile: 
         reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
         for row in reader1:
             for column in row:
                 times_to_fill.append(str(column))
+
+
+print("times:")
+for t in times_to_fill:
+    if t not in times:
+        las_with_curr_shift = []
+        for la in LAs:
+            if la.shifts.__contains__(str(t)):
+                las_with_curr_shift.append(la)
+        for la in las_with_curr_shift:
+            for s in la.shifts:
+                if times.__contains__(str(s)):
+                    if times[str(s)].__contains__(la):
+                        if len(times[str(s)]) > 1:
+                            #print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
+                            times[str(t)] = []
+                            times[str(t)].append(la)
+                            times[str(s)].remove(la)
+                            #print("moved ", la.name, "from ", str(s), "to ", str(t) )
+                            break
+            break
+
+
+# print("LA's who still have hours left:")
+# for la in LAs:
+#     if(la.hours > 0):
+#         print(la.name, ", hours left: ", la.hours)
 
 
 #prints out LA information:
