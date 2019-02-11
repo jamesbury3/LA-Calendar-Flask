@@ -86,8 +86,10 @@
         
             <!-- <h1>Assigned Times:</h1>
             <p>{{ times|safe }}</p> -->
-            <h2>Unassigned Times:</h2>
-            <p>{{ unassigned_times|safe }}</p>
+            {% if unassigned_times %}
+                <h2>Unassigned Times:</h2>
+                <p>{{ unassigned_times|safe }}</p>
+            {% endif %}
         </div>
     </body>
 {% endblock %}
