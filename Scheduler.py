@@ -69,12 +69,7 @@ with open('csv_files/cohortShift.csv') as csvfile:                      #might n
                                     least.addHours()
                         if times.__contains__(str(column)):
                             prev_time = times[str(column)]
-                        for l in LAs:
-                            if l.name == "Varun Tanna":
-                                print(l.hours)
-                                for ti in times:
-                                    if times[str(ti)].__contains__(l):
-                                        print(str(ti))
+                        
                 
                 column_number += 1
 
@@ -100,7 +95,7 @@ with open('csv_files/shift_times.csv') as csvfile:
                 times_to_fill.append(str(column))
 
 
-print("times:")
+#print("times:")
 for t in times_to_fill:
     if t not in times:
         las_with_curr_shift = []
@@ -112,11 +107,11 @@ for t in times_to_fill:
                 if times.__contains__(str(s)):
                     if times[str(s)].__contains__(la):
                         if len(times[str(s)]) > 1:
-                            print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
+                            #print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
                             times[str(t)] = []
                             times[str(t)].append(la)
                             times[str(s)].remove(la)
-                            print("moved ", la.name, "from ", str(s), "to ", str(t) )
+                            #print("moved ", la.name, "from ", str(s), "to ", str(t) )
                             break
             break
 
@@ -132,10 +127,10 @@ for la in LAs:
                 la.subtractHours()
 
 
-print("LA's who still have hours left:")
-for la in LAs:
-    if(la.hours > 0):
-        print(la.name, ", hours left: ", la.hours)
+# print("LA's who still have hours left:")
+# for la in LAs:
+#     if(la.hours > 0):
+#         print(la.name, ", hours left: ", la.hours)
 
 
 #prints out LA information:
