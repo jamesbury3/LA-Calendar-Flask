@@ -6,7 +6,7 @@ from flask import Flask
 from flask import render_template
 from flask_bootstrap import Bootstrap
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+#bootstrap = Bootstrap(app)
 
 @app.route('/')                 #index page
 def index():
