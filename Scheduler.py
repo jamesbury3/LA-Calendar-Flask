@@ -20,7 +20,7 @@ class LA:                       #creates LA Class with a name, hours which shoul
     def addHours(self):
         self.hours = int(self.hours)+1
 
-with open('csv_files/firstSchedule.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/cohortShift.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -56,7 +56,7 @@ with open('csv_files/firstSchedule.csv') as csvfile:                      #might
                                         for la in prev_time:
                                             if LAs[row_number - 1].name is la.name:
                                                 la_worked_previously = True
-                                    if la_worked_previously and int(LAs[row_number - 1].hours) > 0:
+                                    if la_worked_previously:
                                         group = times[str(column)]
                                         group.remove(LAs[row_number - 1])
                                     else:
@@ -69,22 +69,28 @@ with open('csv_files/firstSchedule.csv') as csvfile:                      #might
                                     least.addHours()
                         if times.__contains__(str(column)):
                             prev_time = times[str(column)]
+                        for l in LAs:
+                            if l.name == "Varun Tanna":
+                                print(l.hours)
+                                for ti in times:
+                                    if times[str(ti)].__contains__(l):
+                                        print(str(ti))
                 
                 column_number += 1
 
         row_number += 1
         column_number = 0
 
-        for la in LAs:
-                for time in la.shifts:
-                    if int(la.hours)>0 and not times.__contains__(time):
-                        times[str(time)] = []
-                        times[str(time)].append(la)
-                        la.subtractHours()
-                    else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
-                            times[str(time)].append(la)
-                            la.subtractHours()
+for la in LAs:
+    for time in la.shifts:
+        if int(la.hours)>0 and not times.__contains__(time):
+            times[str(time)] = []
+            times[str(time)].append(la)
+            la.subtractHours()
+        else:
+            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                times[str(time)].append(la)
+                la.subtractHours()        
 
 
 with open('csv_files/shift_times.csv') as csvfile: 
@@ -106,19 +112,30 @@ for t in times_to_fill:
                 if times.__contains__(str(s)):
                     if times[str(s)].__contains__(la):
                         if len(times[str(s)]) > 1:
-                            #print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
+                            print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
                             times[str(t)] = []
                             times[str(t)].append(la)
                             times[str(s)].remove(la)
-                            #print("moved ", la.name, "from ", str(s), "to ", str(t) )
+                            print("moved ", la.name, "from ", str(s), "to ", str(t) )
                             break
             break
 
+for la in LAs:
+    for time in la.shifts:
+        if int(la.hours)>0 and not times.__contains__(time):
+            times[str(time)] = []
+            times[str(time)].append(la)
+            la.subtractHours()
+        else:
+            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                times[str(time)].append(la)
+                la.subtractHours()
 
-# print("LA's who still have hours left:")
-# for la in LAs:
-#     if(la.hours > 0):
-#         print(la.name, ", hours left: ", la.hours)
+
+print("LA's who still have hours left:")
+for la in LAs:
+    if(la.hours > 0):
+        print(la.name, ", hours left: ", la.hours)
 
 
 #prints out LA information:
