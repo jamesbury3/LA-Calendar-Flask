@@ -50,7 +50,7 @@ with open('csv_files/final.csv') as csvfile:                      #might need to
                             if int(LAs[row_number - 1].hours) > 0:
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
-                                if len(times[str(column)]) > 3:
+                                if len(times[str(column)]) > 4:
                                     least = LAs[row_number - 1]
                                     for other in times[str(column)]:
                                         if least.hours > other.hours:
@@ -63,6 +63,9 @@ with open('csv_files/final.csv') as csvfile:                      #might need to
         row_number += 1
         column_number = 0
 
+
+
+
 for la in LAs:
                 for time in la.shifts:
                     if int(la.hours)>0 and not times.__contains__(time):
@@ -70,9 +73,17 @@ for la in LAs:
                         times[str(time)].append(la)
                         la.subtractHours()
                     else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
+                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
                             times[str(time)].append(la)
                             la.subtractHours()        
+
+
+
+with open('csv_files/shift_times.csv') as csvfile: 
+        reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
+        for row in reader1:
+            for column in row:
+                times_to_fill.append(str(column))
 
 for t in times_to_fill:
     if t not in times:
@@ -93,13 +104,27 @@ for t in times_to_fill:
                             break
             break
 
-with open('csv_files/shift_times.csv') as csvfile: 
-        reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
-        for row in reader1:
-            for column in row:
-                times_to_fill.append(str(column))
+for la in LAs:
+                for time in la.shifts:
+                    if int(la.hours)>0 and not times.__contains__(time):
+                        times[str(time)] = []
+                        times[str(time)].append(la)
+                        la.subtractHours()
+                    else:
+                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                            times[str(time)].append(la)
+                            la.subtractHours()
 
-
+for la in LAs:
+                for time in la.shifts:
+                    if int(la.hours)>0 and not times.__contains__(time):
+                        times[str(time)] = []
+                        times[str(time)].append(la)
+                        la.subtractHours()
+                    else:
+                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                            times[str(time)].append(la)
+                            la.subtractHours()
 #prints out LA information:
 
 #iterator = 0
