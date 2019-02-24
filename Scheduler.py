@@ -20,7 +20,7 @@ class LA:                       #creates LA Class with a name, hours which shoul
     def addHours(self):
         self.hours = int(self.hours)+1
 
-with open('csv_files/cohortShift.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/final.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -50,7 +50,7 @@ with open('csv_files/cohortShift.csv') as csvfile:                      #might n
                             if int(LAs[row_number - 1].hours) > 0:
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
-                                if len(times[str(column)]) > 4:
+                                if len(times[str(column)]) > 3:
                                     least = LAs[row_number - 1]
                                     for other in times[str(column)]:
                                         if least.hours > other.hours:
@@ -73,6 +73,26 @@ for la in LAs:
                         if int(la.hours)>0 and len(times[str(time)]) < 3 and not times[str(time)].__contains__(la):
                             times[str(time)].append(la)
                             la.subtractHours()        
+
+for t in times_to_fill:
+    if t not in times:
+        las_with_curr_shift = []
+        for la in LAs:
+            if la.shifts.__contains__(str(t)):
+                las_with_curr_shift.append(la)
+        for la in las_with_curr_shift:
+            for s in la.shifts:
+                if times.__contains__(str(s)):
+                    if times[str(s)].__contains__(la):
+                        if len(times[str(s)]) > 1:
+                            #print(la.name, "can be redistributed from ", str(s), "to ", str(t) )
+                            times[str(t)] = []
+                            times[str(t)].append(la)
+                            times[str(s)].remove(la)
+                            #print("moved ", la.name, "from ", str(s), "to ", str(t) )
+                            break
+            break
+
 with open('csv_files/shift_times.csv') as csvfile: 
         reader1 = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
         for row in reader1:
