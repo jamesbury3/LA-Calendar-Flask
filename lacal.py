@@ -52,7 +52,7 @@ for time in friday:
     for n in friday.get(time).split(", "):
         if n not in names:
             names.append(n)
-print(names)
+            
 @app.route('/', methods=['GET','POST'])                 #index page
 def index():
 
