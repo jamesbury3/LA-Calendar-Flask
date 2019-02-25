@@ -13,91 +13,124 @@
     </head>
     <body>
         <div class="container">
-            <h7 class="display-4">Monday:</h7>
-            <p></p>
-            <div class="row">
-                {% for time in monday %}
-                <div class="col-md-3">
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Shift</div>
-                            <div class="card-body text-secondary">
-                            <h5 class="card-title">{{ time|safe }}</h5>
-                                <p class="card-text">{{ monday.get(time)|safe }}</p>
+
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.la_name.label }}<br>
+                    {{ form.la_name(size=32) }}<br>
+                    {% for error in form.la_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+            {% if on_day[0] %}
+                <h7 class="display-4">Monday:</h7>
+                <p></p>
+                <div class="row">
+                    {% for time in monday %}
+                        {% if name in monday.get(time) %}
+                            <div class="col-md-3">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Shift</div>
+                                        <div class="card-body text-secondary">
+                                        <h5 class="card-title">{{ time|safe }}</h5>
+                                            <p class="card-text">{{ monday.get(time)|safe }}</p>
+                                        </div>
+                                    
+                                </div>
                             </div>
-                        
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <h7 class="display-4">Tuesday:</h7>
-            <p></p>
-            <div class="row">
-                {% for time in tuesday %}
-                <div class="col-md-3">
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Shift</div>
-                            <div class="card-body text-secondary">
-                            <h5 class="card-title">{{ time|safe }}</h5>
-                                <p class="card-text">{{ tuesday.get(time)|safe }}</p>
+            {% endif %}
+            {% if on_day[1] %}
+                <h7 class="display-4">Tuesday:</h7>
+                <p></p>
+                <div class="row">
+                    {% for time in tuesday %}
+                        {% if name in tuesday.get(time) %}
+                            <div class="col-md-3">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Shift</div>
+                                        <div class="card-body text-secondary">
+                                        <h5 class="card-title">{{ time|safe }}</h5>
+                                            <p class="card-text">{{ tuesday.get(time)|safe }}</p>
+                                        </div>
+                                    
+                                </div>
                             </div>
-                        
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <h7 class="display-4">Wednesday:</h7>
-            <p></p>
-            <div class="row">
-                {% for time in wednesday %}
-                <div class="col-md-3">
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Shift</div>
-                            <div class="card-body text-secondary">
-                            <h5 class="card-title">{{ time|safe }}</h5>
-                                <p class="card-text">{{ wednesday.get(time)|safe }}</p>
+            {% endif %}
+            {% if on_day[2] %}
+                <h7 class="display-4">Wednesday:</h7>
+                <p></p>
+                <div class="row">
+                    {% for time in wednesday %}
+                        {% if name in wednesday.get(time) %}
+                            <div class="col-md-3">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Shift</div>
+                                        <div class="card-body text-secondary">
+                                        <h5 class="card-title">{{ time|safe }}</h5>
+                                            <p class="card-text">{{ wednesday.get(time)|safe }}</p>
+                                        </div>
+                                    
+                                </div>
                             </div>
-                        
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <h7 class="display-4">Thursday:</h7>
-            <p></p>
-            <div class="row">
-                {% for time in thursday %}
-                <div class="col-md-3">
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Shift</div>
-                            <div class="card-body text-secondary">
-                            <h5 class="card-title">{{ time|safe }}</h5>
-                                <p class="card-text">{{ thursday.get(time)|safe }}</p>
+            {% endif %}
+            {% if on_day[3] %}
+                <h7 class="display-4">Thursday:</h7>
+                <p></p>
+                <div class="row">
+                    {% for time in thursday %}
+                        {% if name in thursday.get(time) %}
+                            <div class="col-md-3">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Shift</div>
+                                        <div class="card-body text-secondary">
+                                        <h5 class="card-title">{{ time|safe }}</h5>
+                                            <p class="card-text">{{ thursday.get(time)|safe }}</p>
+                                        </div>
+                                    
+                                </div>
                             </div>
-                        
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <h7 class="display-4">Friday:</h7>
-            <p></p>
-            <div class="row">
-                {% for time in friday %}
-                <div class="col-md-3">
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Shift</div>
-                            <div class="card-body text-secondary">
-                            <h5 class="card-title">{{ time|safe }}</h5>
-                                <p class="card-text">{{ friday.get(time)|safe }}</p>
+            {% endif %}
+            {% if on_day[4] %}
+                <h7 class="display-4">Friday:</h7>
+                <p></p>
+                <div class="row">
+                    {% for time in friday %}
+                        {% if name in friday.get(time) %}
+                            <div class="col-md-3">
+                                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Shift</div>
+                                        <div class="card-body text-secondary">
+                                        <h5 class="card-title">{{ time|safe }}</h5>
+                                            <p class="card-text">{{ friday.get(time)|safe }}</p>
+                                        </div>
+                                    
+                                </div>
                             </div>
-                        
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        
+            {% endif %}
             <!-- <h1>Assigned Times:</h1>
             <p>{{ times|safe }}</p> -->
-            <h2>Unassigned Times:</h2>
-            <p>{{ unassigned_times|safe }}</p>
+            {% if unassigned_times %}
+                <h2>Unassigned Times:</h2>
+                <p>{{ unassigned_times|safe }}</p>
+            {% endif %}
         </div>
     </body>
 </html>
