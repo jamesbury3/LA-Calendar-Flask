@@ -67,15 +67,15 @@ with open('csv_files/final.csv') as csvfile:                      #might need to
 
 
 for la in LAs:
-                for time in la.shifts:
-                    if int(la.hours)>0 and not times.__contains__(time):
-                        times[str(time)] = []
-                        times[str(time)].append(la)
-                        la.subtractHours()
-                    else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
-                            times[str(time)].append(la)
-                            la.subtractHours()        
+    for time in la.shifts:
+        if int(la.hours)>0 and not times.__contains__(time):
+            times[str(time)] = []
+            times[str(time)].append(la)
+            la.subtractHours()
+        else:
+            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                times[str(time)].append(la)
+                la.subtractHours()        
 
 
 
@@ -105,26 +105,26 @@ for t in times_to_fill:
             break
 
 for la in LAs:
-                for time in la.shifts:
-                    if int(la.hours)>0 and not times.__contains__(time):
-                        times[str(time)] = []
-                        times[str(time)].append(la)
-                        la.subtractHours()
-                    else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
-                            times[str(time)].append(la)
-                            la.subtractHours()
+    for time in la.shifts:
+        if int(la.hours)>0 and not times.__contains__(time):
+            times[str(time)] = []
+            times[str(time)].append(la)
+            la.subtractHours()
+        else:
+            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                times[str(time)].append(la)
+                la.subtractHours()
 
 for la in LAs:
-                for time in la.shifts:
-                    if int(la.hours)>0 and not times.__contains__(time):
-                        times[str(time)] = []
-                        times[str(time)].append(la)
-                        la.subtractHours()
-                    else:
-                        if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
-                            times[str(time)].append(la)
-                            la.subtractHours()
+    for time in la.shifts:
+        if int(la.hours)>0 and not times.__contains__(time):
+            times[str(time)] = []
+            times[str(time)].append(la)
+            la.subtractHours()
+        else:
+            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+                times[str(time)].append(la)
+                la.subtractHours()
 #prints out LA information:
 
 #iterator = 0
