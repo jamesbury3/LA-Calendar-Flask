@@ -1,9 +1,10 @@
 import time
 import Scheduler
 import collections
+import json
 from forms import SearchForm
 
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, Response, request
 from flask import render_template
 app = Flask(__name__)
 from config import Config
@@ -11,29 +12,53 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
+times = Scheduler.getTimesAndLAs()                      #gets the dictionary of times and las at each time
+monday = collections.OrderedDict()
+tuesday = collections.OrderedDict()
+wednesday = collections.OrderedDict()
+thursday = collections.OrderedDict()
+friday = collections.OrderedDict()
+
+for time in times:                                      #creates a new dictionary for each day of the week
+    if 'Monday' in time:
+        monday[time] = times.get(time)
+    if 'Tues' in time:
+        tuesday[time] = times.get(time)
+    if 'Wed' in time:
+        wednesday[time] = times.get(time)
+    if 'Thur' in time:
+        thursday[time] = times.get(time)
+    if 'Fri' in time:
+        friday[time] = times.get(time)
+
+names = []
+for time in monday:
+    for n in monday.get(time).split(", "):
+        if n not in names:
+            names.append(n)
+for time in tuesday:
+    for n in tuesday.get(time).split(", "):
+        if n not in names:
+            names.append(n)
+for time in wednesday:
+    for n in wednesday.get(time).split(", "):
+        if n not in names:
+            names.append(n)
+for time in thursday:
+    for n in thursday.get(time).split(", "):
+        if n not in names:
+            names.append(n)
+for time in friday:
+    for n in friday.get(time).split(", "):
+        if n not in names:
+            names.append(n)
+print(names)
 @app.route('/', methods=['GET','POST'])                 #index page
 def index():
 
-    form = SearchForm()
+    form = SearchForm(request.form)
     current_name = ""
-    times = Scheduler.getTimesAndLAs()                      #gets the dictionary of times and las at each time
-    monday = collections.OrderedDict()
-    tuesday = collections.OrderedDict()
-    wednesday = collections.OrderedDict()
-    thursday = collections.OrderedDict()
-    friday = collections.OrderedDict()
-
-    for time in times:                                      #creates a new dictionary for each day of the week
-        if 'Monday' in time:
-            monday[time] = times.get(time)
-        if 'Tues' in time:
-            tuesday[time] = times.get(time)
-        if 'Wed' in time:
-            wednesday[time] = times.get(time)
-        if 'Thur' in time:
-            thursday[time] = times.get(time)
-        if 'Fri' in time:
-            friday[time] = times.get(time)
+    
 
     on_day = [False, False, False, False, False]
 
@@ -63,3 +88,7 @@ def index():
     return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, form = form, name = current_name, \
     on_day = on_day)
+
+@app.route('/_autocomplete', methods=['GET'])
+def autocomplete():
+    return Response(json.dumps(names), mimetype='application/json')
