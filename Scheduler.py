@@ -20,7 +20,7 @@ class LA:                       #creates LA Class with a name, hours which shoul
     def addHours(self):
         self.hours = int(self.hours)+1
 
-with open('csv_files/final.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/fall19responses.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -50,7 +50,7 @@ with open('csv_files/final.csv') as csvfile:                      #might need to
                             if int(LAs[row_number - 1].hours) > 0:
                                 times[str(column)].append(LAs[row_number - 1])   #else it just adds the la to that shift
                                 LAs[row_number - 1].subtractHours()
-                                if len(times[str(column)]) > 4:
+                                if len(times[str(column)]) > 5:
                                     least = LAs[row_number - 1]
                                     for other in times[str(column)]:
                                         if least.hours > other.hours:
@@ -73,7 +73,7 @@ for la in LAs:
             times[str(time)].append(la)
             la.subtractHours()
         else:
-            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+            if int(la.hours)>0 and len(times[str(time)]) < 5 and not times[str(time)].__contains__(la):
                 times[str(time)].append(la)
                 la.subtractHours()        
 
@@ -111,7 +111,7 @@ for la in LAs:
             times[str(time)].append(la)
             la.subtractHours()
         else:
-            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+            if int(la.hours)>0 and len(times[str(time)]) < 5 and not times[str(time)].__contains__(la):
                 times[str(time)].append(la)
                 la.subtractHours()
 
@@ -122,7 +122,7 @@ for la in LAs:
             times[str(time)].append(la)
             la.subtractHours()
         else:
-            if int(la.hours)>0 and len(times[str(time)]) < 4 and not times[str(time)].__contains__(la):
+            if int(la.hours)>0 and len(times[str(time)]) < 5 and not times[str(time)].__contains__(la):
                 times[str(time)].append(la)
                 la.subtractHours()
 #prints out LA information:
