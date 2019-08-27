@@ -62,7 +62,7 @@ def index():
 
     on_day = [False, False, False, False, False]
 
-    shiftLeadMonday = {"Monday 9-10":"Chantal", 
+    shiftLeadMonday = {"Monday 9-10":"Amy", 
                        "Monday 10-11": "Chantal", 
                        "Monday 11-12": "TBD", 
                        "Monday 12-1": "Sophia", 
@@ -84,27 +84,27 @@ def index():
                         "Thur 10-11": "James",
                         "Thur 11-12": "James",
                         "Thur 12-1": "James",
-                        "Thur 1-2": "TBD",
+                        "Thur 1-2": "Nidhi",
                         "Thur 2-3": "TBD",
-                        "Thur 3-4": "Amy",
-                        "Thur 4-5": "TBD"}
+                        "Thur 3-4": "Caleb",
+                        "Thur 4-5": "Caleb"}
 
     shiftLeadWednesday = {"Wed 9-10": "Amy", 
-                        "Wed 10-11": "TBD", 
+                        "Wed 10-11": "Nidhi", 
                         "Wed 11-12":"Amy", 
                         "Wed 12-1" :"Sophia", 
                         "Wed 1-2": "Sophia", 
                         "Wed 2-3": "Sophia", 
                         "Wed 3-4": "Sophia", 
-                        "Wed 4-5": "Sophia"}
-    shiftLeadFriday = {"Fri 9-10":"James", 
-                    "Fri 10-11":"Amy", 
+                        "Wed 4-5": "Nidhi"}
+    shiftLeadFriday = {"Fri 9-10":"Caleb", 
+                    "Fri 10-11":"Caleb", 
                     "Fri 11-12": "James", 
                     "Fri 12-1": "TBD", 
-                    "Fri 1-2" : "TBD", 
-                    "Fri 2-3":"TBD", 
-                    "Fri 3-4":"TBD", 
-                    "Fri 4-5":"TBD"}
+                    "Fri 1-2" : "Caleb", 
+                    "Fri 2-3":"Caleb", 
+                    "Fri 3-4":"Nidhi", 
+                    "Fri 4-5":"Nidhi"}
 
     unassigned_times = Scheduler.getUnWorkedTimes()         #gets the unassigned times
     if form.validate_on_submit():

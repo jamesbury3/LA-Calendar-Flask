@@ -169,7 +169,13 @@ def getTimesAndLAs():
         times_and_las["Fri 3-4"] += ", Peter Lee"
         times_and_las["Fri 1-2"] += ", Sam Catalano, Manivannan Senthil"
         times_and_las["Thur 11-12"] += ", Michael Womick"
+        times_and_las["Tues 11-12"] += ", Amanda Gustafson"
+        times_and_las["Wed 11-12"] += ", Amanda Gustafson"
 
+
+
+        times_and_las["Fri 9-10"] = times_and_las["Fri 9-10"].replace('Amanda Gustafson, ', '')
+        times_and_las["Fri 10-11"] = times_and_las["Fri 10-11"].replace('Amanda Gustafson, ', '')
         times_and_las["Tues 2-3"] = times_and_las["Tues 2-3"].replace('Rick Ramirez, ', 'Daniel Koceja, ')
         times_and_las["Thur 9-10"] = times_and_las["Thur 9-10"].replace('Daniel Koceja, ', '')
         times_and_las["Wed 9-10"] = times_and_las["Wed 9-10"].replace('Manivannan Senthil', 'Shannon Goad')
@@ -179,7 +185,6 @@ def getTimesAndLAs():
         times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Anh Nguyen', 'Ruchi')
         times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Michael Womick, ', 'Rick Ramirez, ')
         times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Rick Ramirez, ', '')
-
     return times_and_las
 
 def getUnWorkedTimes():
