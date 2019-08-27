@@ -62,11 +62,49 @@ def index():
 
     on_day = [False, False, False, False, False]
 
-    shiftLeadMonday = ["Chantal", "Chantal", 11-12, "Sophia", "Chantal", "Chantal", "Sophia", "Chantal"]
-    shiftLeadTuesday = [9-10, "Chantal", "James", "James", "Chantal", "Amy", "Amy", "Amy"]
-    shiftLeadWednesday = ["Amy", 10-11, "Amy", "Sophia", "Sophia", "Sophia", "Sophia", "Sophia"]
-    shiftLeadThurs = [9-10, "James", "James", "James", 1-2, "Amy", 4-5]
-    shiftLeadFriday = ["James", "Amy", "James", 12-1, 1-2, 2-3, 3-4, 4-5]
+    shiftLeadMonday = {"Monday 9-10":"Chantal", 
+                       "Monday 10-11": "Chantal", 
+                       "Monday 11-12": "TBD", 
+                       "Monday 12-1": "Sophia", 
+                       "Monday 1-2": "Chantal", 
+                       "Monday 2-3": "Chantal", 
+                       "Monday 3-4": "Sophia", 
+                       "Monday 4-5": "Chantal"}
+
+    shiftLeadTuesday = {"Tues 9-10": "TBD",
+                        "Tues 10-11": "Chantal",
+                        "Tues 11-12": "James",
+                        "Tues 12-1": "James",
+                        "Tues 1-2": "Chantal",
+                        "Tues 2-3": "Amy",
+                        "Tues 3-4": "Amy",
+                        "Tues 4-5": "Amy"}
+    
+    shiftLeadThursday = {"Thur 9-10": "TBD",
+                        "Thur 10-11": "James",
+                        "Thur 11-12": "James",
+                        "Thur 12-1": "James",
+                        "Thur 1-2": "TBD",
+                        "Thur 2-3": "TBD",
+                        "Thur 3-4": "Amy",
+                        "Thur 4-5": "TBD"}
+
+    shiftLeadWednesday = {"Wed 9-10": "Amy", 
+                        "Wed 10-11": "TBD", 
+                        "Wed 11-12":"Amy", 
+                        "Wed 12-1" :"Sophia", 
+                        "Wed 1-2": "Sophia", 
+                        "Wed 2-3": "Sophia", 
+                        "Wed 3-4": "Sophia", 
+                        "Wed 4-5": "Sophia"}
+    shiftLeadFriday = {"Fri 9-10":"James", 
+                    "Fri 10-11":"Amy", 
+                    "Fri 11-12": "James", 
+                    "Fri 12-1": "TBD", 
+                    "Fri 1-2" : "TBD", 
+                    "Fri 2-3":"TBD", 
+                    "Fri 3-4":"TBD", 
+                    "Fri 4-5":"TBD"}
 
     unassigned_times = Scheduler.getUnWorkedTimes()         #gets the unassigned times
     if form.validate_on_submit():
@@ -89,13 +127,13 @@ def index():
         return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, form = form, name = current_name, \
     on_day = on_day, shiftLeadMonday = shiftLeadMonday, shiftLeadTuesday = shiftLeadTuesday, shiftLeadWednesday = shiftLeadWednesday, \
-     shiftLeadThurs =  shiftLeadThurs, shiftLeadFriday = shiftLeadFriday)
+     shiftLeadThursday =  shiftLeadThursday, shiftLeadFriday = shiftLeadFriday)
     
     on_day = [True, True, True, True, True]
     return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, form = form, name = current_name, \
     on_day = on_day, shiftLeadMonday = shiftLeadMonday, shiftLeadTuesday = shiftLeadTuesday, shiftLeadWednesday = shiftLeadWednesday, \
-     shiftLeadThurs =  shiftLeadThurs, shiftLeadFriday = shiftLeadFriday)
+     shiftLeadThursday =  shiftLeadThursday, shiftLeadFriday = shiftLeadFriday)
 
 @app.route('/_autocomplete', methods=['GET'])
 def autocomplete():

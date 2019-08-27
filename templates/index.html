@@ -59,7 +59,7 @@
                         {% if name in monday.get(time) %}
                             <div class="col-md-3">
                                 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Shift</div>
+                                    <div class="card-header">{{shiftLeadMonday.get(time)|safe}}</div>
                                         <div class="card-body text-secondary">
                                         <h5 class="card-title">{{ time|safe }}</h5>
                                             <p class="card-text">{{ monday.get(time)|safe }}</p>
@@ -78,7 +78,7 @@
                         {% if name in tuesday.get(time) %}
                             <div class="col-md-3">
                                 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Shift</div>
+                                    <div class="card-header">{{shiftLeadTuesday.get(time)|safe}}</div>
                                         <div class="card-body text-secondary">
                                         <h5 class="card-title">{{ time|safe }}</h5>
                                             <p class="card-text">{{ tuesday.get(time)|safe }}</p>
@@ -98,7 +98,7 @@
                         {% if name in wednesday.get(time) %}
                             <div class="col-md-3">
                                 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Shift</div>
+                                    <div class="card-header">{{shiftLeadWednesday.get(time)|safe}}</div>
                                         <div class="card-body text-secondary">
                                         <h5 class="card-title">{{ time|safe }}</h5>
                                             <p class="card-text">{{ wednesday.get(time)|safe }}</p>
@@ -118,7 +118,7 @@
                         {% if name in thursday.get(time) %}
                             <div class="col-md-3">
                                 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Shift</div>
+                                    <div class="card-header">{{shiftLeadThursday.get(time)|safe}}</div>
                                         <div class="card-body text-secondary">
                                         <h5 class="card-title">{{ time|safe }}</h5>
                                             <p class="card-text">{{ thursday.get(time)|safe }}</p>
@@ -138,7 +138,7 @@
                         {% if name in friday.get(time) %}
                             <div class="col-md-3">
                                 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Shift</div>
+                                    <div class="card-header">{{shiftLeadFriday.get(time)|safe}}</div>
                                         <div class="card-body text-secondary">
                                         <h5 class="card-title">{{ time|safe }}</h5>
                                             <p class="card-text">{{ friday.get(time)|safe }}</p>
