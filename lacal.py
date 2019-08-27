@@ -62,6 +62,12 @@ def index():
 
     on_day = [False, False, False, False, False]
 
+    shiftLeadMonday = ["Chantal", "Chantal", 11-12, "Sophia", "Chantal", "Chantal", "Sophia", "Chantal"]
+    shiftLeadTuesday = [9-10, "Chantal", "James", "James", "Chantal", "Amy", "Amy", "Amy"]
+    shiftLeadWednesday = ["Amy", 10-11, "Amy", "Sophia", "Sophia", "Sophia", "Sophia", "Sophia"]
+    shiftLeadThurs = [9-10, "James", "James", "James", 1-2, "Amy", 4-5]
+    shiftLeadFriday = ["James", "Amy", "James", 12-1, 1-2, 2-3, 3-4, 4-5]
+
     unassigned_times = Scheduler.getUnWorkedTimes()         #gets the unassigned times
     if form.validate_on_submit():
         current_name = form.la_name.data
@@ -82,12 +88,14 @@ def index():
                 on_day[4] = True
         return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, form = form, name = current_name, \
-    on_day = on_day)
+    on_day = on_day, shiftLeadMonday = shiftLeadMonday, shiftLeadTuesday = shiftLeadTuesday, shiftLeadWednesday = shiftLeadWednesday, \
+     shiftLeadThurs =  shiftLeadThurs, shiftLeadFriday = shiftLeadFriday)
     
     on_day = [True, True, True, True, True]
     return render_template('index.html', title='Home', times=times, unassigned_times = unassigned_times, \
     monday = monday, tuesday = tuesday, wednesday = wednesday, thursday = thursday, friday = friday, form = form, name = current_name, \
-    on_day = on_day)
+    on_day = on_day, shiftLeadMonday = shiftLeadMonday, shiftLeadTuesday = shiftLeadTuesday, shiftLeadWednesday = shiftLeadWednesday, \
+     shiftLeadThurs =  shiftLeadThurs, shiftLeadFriday = shiftLeadFriday)
 
 @app.route('/_autocomplete', methods=['GET'])
 def autocomplete():

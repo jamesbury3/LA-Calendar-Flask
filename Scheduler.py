@@ -161,6 +161,25 @@ def getTimesAndLAs():
                             times_and_las[column] += ', ' + la.name
                         i += 1  
             i = 0
+        times_and_las["Tues 12-1"] += ", Danielle du Preez"
+        times_and_las["Monday 10-11"] += ", Ruchi"
+        times_and_las["Tues 2-3"] += ", Sarah Bost"
+        times_and_las["Monday 1-2"] += ", Jacob Gersfeld"
+        times_and_las["Fri 4-5"] += ", Anh Nguyen, Rick Ramirez"
+        times_and_las["Fri 3-4"] += ", Peter Lee"
+        times_and_las["Fri 1-2"] += ", Sam Catalano, Manivannan Senthil"
+        times_and_las["Thur 11-12"] += ", Michael Womick"
+
+        times_and_las["Tues 2-3"] = times_and_las["Tues 2-3"].replace('Rick Ramirez, ', 'Daniel Koceja, ')
+        times_and_las["Thur 9-10"] = times_and_las["Thur 9-10"].replace('Daniel Koceja, ', '')
+        times_and_las["Wed 9-10"] = times_and_las["Wed 9-10"].replace('Manivannan Senthil', 'Shannon Goad')
+        times_and_las["Wed 4-5"] = times_and_las["Wed 4-5"].replace('Sam Catalano, ', 'Shannon Goad, ')
+        times_and_las["Monday 3-4"] = times_and_las["Monday 3-4"].replace('Peter Lee, ', 'Angel Karafas, ')
+        times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Shannon Goad, ', 'Janelle Zeng, ')
+        times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Anh Nguyen', 'Ruchi')
+        times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Michael Womick, ', 'Rick Ramirez, ')
+        times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Rick Ramirez, ', '')
+
     return times_and_las
 
 def getUnWorkedTimes():
