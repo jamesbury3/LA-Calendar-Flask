@@ -100,7 +100,7 @@ def index():
     shiftLeadFriday = {"Fri 9-10":"Caleb", 
                     "Fri 10-11":"Caleb", 
                     "Fri 11-12": "James", 
-                    "Fri 12-1": "TBD", 
+                    "Fri 12-1": "Chantal", 
                     "Fri 1-2" : "Caleb", 
                     "Fri 2-3":"Caleb", 
                     "Fri 3-4":"Nidhi", 
