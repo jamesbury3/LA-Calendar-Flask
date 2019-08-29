@@ -161,10 +161,10 @@ def getTimesAndLAs():
                             times_and_las[column] += ', ' + la.name
                         i += 1  
             i = 0
-        times_and_las["Tues 12-1"] += ", Danielle du Preez"
         times_and_las["Monday 10-11"] += ", Ruchi"
         times_and_las["Tues 2-3"] += ", Sarah Bost"
         times_and_las["Monday 1-2"] += ", Jacob Gersfeld"
+        times_and_las["Monday 2-3"] += ", Jacob Gersfeld"
         times_and_las["Fri 4-5"] += ", Anh Nguyen, Rick Ramirez"
         times_and_las["Fri 3-4"] += ", Peter Lee"
         times_and_las["Fri 1-2"] += ", Manivannan Senthil"
@@ -172,12 +172,17 @@ def getTimesAndLAs():
         times_and_las["Tues 11-12"] += ", Amanda Gustafson"
         times_and_las["Thur 3-4"] += ", Sam Catalano"
         times_and_las["Wed 11-12"] += ", Amanda Gustafson"
+        times_and_las["Wed 12-1"] += ", Jacob Gersfeld"
 
 
 
+
+        times_and_las["Fri 2-3"] = times_and_las["Fri 2-3"].replace('Jacob Gersfeld, ', '')
+        times_and_las["Fri 3-4"] = times_and_las["Fri 3-4"].replace('Jacob Gersfeld, ', 'Travis Cheung, ')
         times_and_las["Fri 9-10"] = times_and_las["Fri 9-10"].replace('Amanda Gustafson, ', '')
         times_and_las["Fri 10-11"] = times_and_las["Fri 10-11"].replace('Amanda Gustafson, ', '')
         times_and_las["Tues 2-3"] = times_and_las["Tues 2-3"].replace('Rick Ramirez, ', 'Daniel Koceja, ')
+        times_and_las["Tues 12-1"] = times_and_las["Tues 12-1"].replace('Travis Cheung', 'Danielle du Preez')
         times_and_las["Thur 9-10"] = times_and_las["Thur 9-10"].replace('Daniel Koceja, ', '')
         times_and_las["Wed 9-10"] = times_and_las["Wed 9-10"].replace('Manivannan Senthil', 'Shannon Goad')
         times_and_las["Wed 4-5"] = times_and_las["Wed 4-5"].replace('Sam Catalano, ', 'Shannon Goad, ')
