@@ -173,10 +173,11 @@ def getTimesAndLAs():
         times_and_las["Thur 3-4"] += ", Sam Catalano"
         times_and_las["Wed 11-12"] += ", Amanda Gustafson"
         times_and_las["Wed 12-1"] += ", Jacob Gersfeld"
+        times_and_las["Tues 10-11"] += ", Andrew Wortas"
 
 
 
-
+        times_and_las["Tues 9-10"] = times_and_las["Tues 9-10"].replace('Andrew Wortas, ', '')
         times_and_las["Fri 2-3"] = times_and_las["Fri 2-3"].replace('Jacob Gersfeld, ', '')
         times_and_las["Fri 3-4"] = times_and_las["Fri 3-4"].replace('Jacob Gersfeld, ', 'Travis Cheung, ')
         times_and_las["Fri 9-10"] = times_and_las["Fri 9-10"].replace('Amanda Gustafson, ', '')
