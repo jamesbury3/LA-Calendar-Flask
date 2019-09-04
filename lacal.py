@@ -72,7 +72,7 @@ def index():
                        "Monday 4-5": "Chantal"}
 
     shiftLeadTuesday = {"Tues 9-10": "TBD",
-                        "Tues 10-11": "Chantal",
+                        "Tues 10-11": "TBD",
                         "Tues 11-12": "James",
                         "Tues 12-1": "James",
                         "Tues 1-2": "Chantal",
