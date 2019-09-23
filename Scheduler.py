@@ -183,6 +183,7 @@ def getTimesAndLAs():
         times_and_las["Fri 9-10"] += ", Matthew Guo"
         times_and_las["Fri 11-12"] += ", Tharun Kintali"
         times_and_las["Thur 3-4"] += ", Sam Catalano"
+        times_and_las["Monday 4-5"] += ", Peter Lee"
 
 
 
@@ -199,6 +200,7 @@ def getTimesAndLAs():
         times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Huanran Meng, ', '')
         times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Komal Essarani, ', '')
         times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Mira Kasari, ', '')
+        times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Peter Lee, ', '')
         times_and_las["Monday 4-5"] = times_and_las["Monday 4-5"].replace('Janelle Zeng, ', '')
         times_and_las["Monday 9-10"] = times_and_las["Monday 9-10"].replace('Dana Rubin, ', '')
         times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Matthew Guo, ', '')
