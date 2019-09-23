@@ -72,7 +72,7 @@ def index():
                        "Monday 4-5": "Chantal"}
 
     shiftLeadTuesday = {"Tues 9-10": "TBD",
-                        "Tues 10-11": "TBD",
+                        "Tues 10-11": "James",
                         "Tues 11-12": "James",
                         "Tues 12-1": "James",
                         "Tues 1-2": "Chantal",
@@ -86,8 +86,8 @@ def index():
                         "Thur 12-1": "James",
                         "Thur 1-2": "Nidhi",
                         "Thur 2-3": "TBD",
-                        "Thur 3-4": "Caleb",
-                        "Thur 4-5": "Caleb"}
+                        "Thur 3-4": "Chantal",
+                        "Thur 4-5": "TBD"}
 
     shiftLeadWednesday = {"Wed 9-10": "Amy", 
                         "Wed 10-11": "Nidhi", 
@@ -97,10 +97,11 @@ def index():
                         "Wed 2-3": "Sophia", 
                         "Wed 3-4": "Sophia", 
                         "Wed 4-5": "Nidhi"}
+
     shiftLeadFriday = {"Fri 9-10":"Caleb", 
                     "Fri 10-11":"Caleb", 
-                    "Fri 11-12": "James", 
-                    "Fri 12-1": "Chantal", 
+                    "Fri 11-12": "Caleb", 
+                    "Fri 12-1": "Caleb", 
                     "Fri 1-2" : "Caleb", 
                     "Fri 2-3":"Caleb", 
                     "Fri 3-4":"Nidhi", 

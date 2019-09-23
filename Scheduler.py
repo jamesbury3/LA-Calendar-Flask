@@ -20,7 +20,7 @@ class LA:                       #creates LA Class with a name, hours which shoul
     def addHours(self):
         self.hours = int(self.hours)+1
 
-with open('csv_files/fall19responses.csv') as csvfile:                      #might need to change slashes to work on mac
+with open('csv_files/fall19cohort.csv') as csvfile:                      #might need to change slashes to work on mac
     reader = csv.reader(csvfile, delimiter=',', quotechar='|', skipinitialspace=True)
     for row in reader:                                                  #iterates through the rows of the csv
         if row_number > 0:
@@ -127,6 +127,8 @@ for la in LAs:
                 la.subtractHours()
 #prints out LA information:
 
+
+
 #iterator = 0
 # for ta in LAs:
 #     print(iterator)
@@ -161,40 +163,50 @@ def getTimesAndLAs():
                             times_and_las[column] += ', ' + la.name
                         i += 1  
             i = 0
-        times_and_las["Monday 10-11"] += ", Ruchi"
-        times_and_las["Tues 2-3"] += ", Sarah Bost"
-        times_and_las["Monday 1-2"] += ", Jacob Gersfeld"
+
+
+        times_and_las["Thur 11-12"] += ", Amanda Gustafson"
+        times_and_las["Thur 12-1"] += ", Amanda Gustafson"
+        times_and_las["Fri 4-5"] += ", Andrew Wortas"
+        times_and_las["Fri 10-11"] += ", Christopher Cui"
+        times_and_las["Fri 3-4"] += ", Dana Rubin"
+        times_and_las["Fri 4-5"] += ", Dana Rubin"
+        times_and_las["Wed 3-4"] += ", Daniel Koceja"
         times_and_las["Monday 2-3"] += ", Jacob Gersfeld"
-        times_and_las["Fri 4-5"] += ", Anh Nguyen, Rick Ramirez, Peter Lee"
-        times_and_las["Fri 3-4"] += ", Peter Lee"
-        times_and_las["Fri 1-2"] += ", Manivannan Senthil"
-        times_and_las["Thur 11-12"] += ", Michael Womick"
-        times_and_las["Tues 11-12"] += ", Amanda Gustafson"
+        times_and_las["Thur 4-5"] += ", Janelle Zeng"
+        times_and_las["Fri 2-3"] += ", Komal Essarani"
+        times_and_las["Fri 3-4"] += ", Komal Essarani"
+        times_and_las["Fri 4-5"] += ", Komal Essarani"
+        times_and_las["Monday 2-3"] += ", Anh Nguyen"
+        times_and_las["Wed 12-1"] += ", Ruchi Sarkar"
+        times_and_las["Fri 1-2"] += ", Mira Kasari"
+        times_and_las["Fri 9-10"] += ", Matthew Guo"
+        times_and_las["Fri 11-12"] += ", Tharun Kintali"
         times_and_las["Thur 3-4"] += ", Sam Catalano"
-        times_and_las["Wed 11-12"] += ", Amanda Gustafson"
-        times_and_las["Wed 12-1"] += ", Jacob Gersfeld"
-        times_and_las["Tues 10-11"] += ", Andrew Wortas"
-        times_and_las["Wed 3-4"] += ", Peter Lee"
 
 
-        times_and_las["Tues 3-4"] = times_and_las["Tues 3-4"].replace('Peter Lee, ', '')
-        times_and_las["Tues 4-5"] = times_and_las["Tues 4-5"].replace('Peter Lee, ', '')        
-        times_and_las["Thur 4-5"] = times_and_las["Thur 4-5"].replace('Peter Lee, ', '')
-        times_and_las["Tues 9-10"] = times_and_las["Tues 9-10"].replace('Andrew Wortas, ', '')
-        times_and_las["Fri 2-3"] = times_and_las["Fri 2-3"].replace('Jacob Gersfeld, ', '')
-        times_and_las["Fri 3-4"] = times_and_las["Fri 3-4"].replace('Jacob Gersfeld, ', 'Travis Cheung, ')
-        times_and_las["Fri 9-10"] = times_and_las["Fri 9-10"].replace('Amanda Gustafson, ', '')
-        times_and_las["Fri 10-11"] = times_and_las["Fri 10-11"].replace('Amanda Gustafson, ', '')
-        times_and_las["Tues 2-3"] = times_and_las["Tues 2-3"].replace('Rick Ramirez, ', 'Daniel Koceja, ')
-        times_and_las["Tues 12-1"] = times_and_las["Tues 12-1"].replace('Travis Cheung', 'Danielle du Preez')
-        times_and_las["Thur 9-10"] = times_and_las["Thur 9-10"].replace('Daniel Koceja, ', '')
-        times_and_las["Wed 9-10"] = times_and_las["Wed 9-10"].replace('Manivannan Senthil', 'Shannon Goad')
-        times_and_las["Wed 4-5"] = times_and_las["Wed 4-5"].replace('Sam Catalano, ', 'Shannon Goad, Peter Lee, ')
-        times_and_las["Monday 3-4"] = times_and_las["Monday 3-4"].replace('Peter Lee, ', 'Angel Karafas, ')
-        times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Shannon Goad, ', 'Janelle Zeng, ')
-        times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Anh Nguyen', 'Ruchi')
-        times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Michael Womick, ', 'Rick Ramirez, ')
-        times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Rick Ramirez, ', '')
+
+        times_and_las["Wed 11-12"] = times_and_las["Wed 11-12"].replace('Amanda Gustafson, ', '')
+        times_and_las["Wed 11-12"] = times_and_las["Wed 11-12"].replace('Komal Essarani, ', '')
+        times_and_las["Wed 2-3"] = times_and_las["Wed 2-3"].replace('Komal Essarani, ', '')
+        times_and_las["Wed 12-1"] = times_and_las["Wed 12-1"].replace('Amanda Gustafson, ', '')
+        times_and_las["Wed 9-10"] = times_and_las["Wed 9-10"].replace('Andrew Wortas, ', '')
+        times_and_las["Tues 2-3"] = times_and_las["Tues 2-3"].replace('Christopher Cui, ', '')
+        times_and_las["Wed 10-11"] = times_and_las["Wed 10-11"].replace('Dana Rubin, ', '')
+        times_and_las["Wed 3-4"] = times_and_las["Wed 3-4"].replace('Dana Rubin, ', '')
+        times_and_las["Wed 3-4"] = times_and_las["Wed 3-4"].replace('Komal Essarani, ', '')
+        times_and_las["Monday 12-1"] = times_and_las["Monday 12-1"].replace('Daniel Koceja, ', 'Jacob Gersfeld, ')
+        times_and_las["Wed 1-2"] = times_and_las["Wed 1-2"].replace('Huanran Meng, ', '')
+        times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Komal Essarani, ', '')
+        times_and_las["Monday 2-3"] = times_and_las["Monday 2-3"].replace('Mira Kasari, ', '')
+        times_and_las["Monday 4-5"] = times_and_las["Monday 4-5"].replace('Janelle Zeng, ', '')
+        times_and_las["Monday 9-10"] = times_and_las["Monday 9-10"].replace('Dana Rubin, ', '')
+        times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Matthew Guo, ', '')
+        times_and_las["Monday 12-1"] = times_and_las["Monday 12-1"].replace('Tharun Kintali', '')
+        times_and_las["Tues 4-5"] = times_and_las["Tues 4-5"].replace('Sam Catalano, ', '')
+
+
+
     return times_and_las
 
 def getUnWorkedTimes():
