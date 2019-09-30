@@ -175,15 +175,16 @@ def getTimesAndLAs():
         times_and_las["Monday 2-3"] += ", Jacob Gersfeld"
         times_and_las["Thur 4-5"] += ", Janelle Zeng"
         times_and_las["Fri 2-3"] += ", Komal Essarani"
-        times_and_las["Fri 3-4"] += ", Komal Essarani"
-        times_and_las["Fri 4-5"] += ", Komal Essarani"
         times_and_las["Monday 2-3"] += ", Anh Nguyen"
         times_and_las["Wed 12-1"] += ", Ruchi Sarkar"
         times_and_las["Fri 1-2"] += ", Mira Kasari"
         times_and_las["Fri 9-10"] += ", Matthew Guo"
-        times_and_las["Fri 11-12"] += ", Tharun Kintali"
+        times_and_las["Fri 11-12"] += ", Tharun Kintali, Komal Essarani"
         times_and_las["Thur 3-4"] += ", Sam Catalano"
         times_and_las["Monday 4-5"] += ", Peter Lee"
+        times_and_las["Fri 12-1"] += ", Mani Senthil"
+        times_and_las["Thur 1-2"] += ", Komal Essarani, Daniel Koceja"
+        times_and_las["Fri 12-1"] += ", Christopher Cui"
 
 
 
@@ -206,6 +207,8 @@ def getTimesAndLAs():
         times_and_las["Monday 11-12"] = times_and_las["Monday 11-12"].replace('Matthew Guo, ', '')
         times_and_las["Monday 12-1"] = times_and_las["Monday 12-1"].replace('Tharun Kintali', '')
         times_and_las["Tues 4-5"] = times_and_las["Tues 4-5"].replace('Sam Catalano, ', '')
+        times_and_las["Tues 12-1"] = times_and_las["Tues 12-1"].replace('Sarah Bost, ', '')
+        times_and_las["Fri 10-11"] = times_and_las["Fri 10-11"].replace(', Christopher Cui', '')
 
 
 
